@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>The Hunger Games - Aventura</title>
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
+        <style>
+            /* --- ESTILOS DE FUENTE Y TEXTO INVERTIDO --- */
+            body, h1, h2, button, section {
+                font-family: 'Cinzel', serif;
+                letter-spacing: 0.15rem; 
+                text-transform: uppercase; 
+            }
+            
+            section.invertir-texto h1,
+section.invertir-texto h2,
+section.invertir-texto p {
+    mix-blend-mode: difference;
+    color: white;
+
+    /* Sombra compatible con blend-mode */
+    filter: drop-shadow(0 0 6px white)
+            drop-shadow(0 0 12px white)
+            drop-shadow(0 0 20px white);
+}
+
+
+            /* --- ESTILOS GENERALES Y FONDO DE PANTALLA --- */
+            html, body {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                overflow: hidden; 
+                background-color: black; 
+            }
+            
+            section h1,
+            section h2,
+            section p {
+                color: white;
+            }
+
+
+            /* --- REGLAS DE TRANSICIÓN Y VISIBILIDAD --- */
+            section {
+                height: 100vh;
+                width: 100vw;
+                display: flex; 
+                flex-direction: column;
+                justify-content: center; 
+                align-items: center; 
+                text-align: center;
+                
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                transition: opacity 0.5s ease-in-out;
+                
+                opacity: 0;
+                visibility: hidden; 
+                pointer-events: none; 
+            }
+
+            .activo {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+                z-index: 10; 
+            }
+            
+            /* --- ESTILOS DE BOTONES --- */
+            .botones{
+                display: flex;
+                flex-direction: column;
+            }
+
+            button{ 
+                padding: 20px;
+                margin: 20px;
+                border-radius: 25px;
+            }
+
+            button:hover{
+                background-color: aquamarine;
+            }
+
+            /* --- ESTILOS DE FONDO DE PANTALLA --- */
+            #pantalla1 {
+                background-image: url("https://wallpapers.com/images/hd/the-hunger-games-mockingjay-logo-art-r470598ojpjv0w1v.jpg");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla2 {
+                background-image: url("https://wallpapercave.com/wp/wp3167076.jpg");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla3 {
+                background-image: url("https://p4.wallpaperbetter.com/wallpaper/146/918/506/jennifer-lawrence-the-hunger-games-wallpaper-preview.jpg");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla4 {
+                background-image: url("https://p4.wallpaperbetter.com/wallpaper/223/663/805/the-hunger-games-2-the-hunger-games-2-the-hunger-games-catching-fire-the-hunger-games-catching-fire-sam-claflin-hd-wallpaper-preview.jpg");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla5 {
+                background-image: url("https://images3.alphacoders.com/264/264405.jpg");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla6 {
+                background-image: url("https://media.vanityfair.com/photos/54cc00c11ca1cf0a23ad2de2/master/w_2560%2Cc_limit/image.jpg");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla7 {
+                background-image: url("https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2022/05/travel-destinations-1652347987.jpg");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla8 {
+                background-image: url("https://static0.srcdn.com/wordpress/wp-content/uploads/2024/01/katniss-jennifer-lawrence-climbing-a-tree-and-looking-at-a-wasp-nest-in-the-hunger-games.jpg?q=50&amp;fit=contain&amp;w=1400&amp;h=700&amp;dpr=1.5");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla9 {
+                background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAY4rd5zit7HUnzLYGb3KnIQK_uX26YBtVtQ&amp;s");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla10 {
+                background-image: url("https://uvn-brightspot.s3.amazonaws.com/assets/vixes/c/cornucopia_los_juegos_del_hambre.jpg");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla11 {
+                background-image: url("https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2022/05/travel-destinations-1652347987.jpg");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla12 {
+                background-image: url("https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2022/05/travel-destinations-1652347987.jpg");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla13 {
+                background-image: url("https://images3.alphacoders.com/264/264405.jpg");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla14 {
+                background-image: url("https://images3.alphacoders.com/264/264405.jpg");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla15 {
+                background-image: url("https://ew.com/thmb/HYDg9KcVKhFzwx4rvHrrfmGKwxg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/westworld-31-2000-4b7aaf7f1ac444d2af47671ef20a4a69.jpg");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla16 {
+                background-image: url("https://images3.alphacoders.com/264/264405.jpg");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla17 {
+                background-image: url("https://images3.alphacoders.com/264/264405.jpg");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla18 {
+                background-image: url("https://images3.alphacoders.com/264/264405.jpg");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla19 {
+                background-image: url("https://wallpapers.com/images/hd/the-hunger-games-katniss-mockingjay-dg6p2l0djf2o441b.jpg");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla20 {
+                background-image: url("https://images3.alphacoders.com/264/264405.jpg");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla21 {
+                background-image: url("https://images3.alphacoders.com/264/264405.jpg");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla22 {
+                background-image: url("https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2022/05/travel-destinations-1652347987.jpg");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla23 {
+                background-image: url("https://images3.alphacoders.com/264/264405.jpg");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+            #pantalla24 {
+                background-image: url("https://images3.alphacoders.com/264/264405.jpg");
+                background-size: cover;
+                background-size: 120%;
+                background-position: center;
+            }
+        </style>
+
+    </head>
+    <script>
+        function cargarPantalla(id){
+            let sActivo = document.querySelectorAll(".activo");
+            let himno = document.getElementById('himnoCapitolio'); // Audio: Himno (looping)
+            let cañon = document.getElementById('audioMuerte');   // Audio: Cañón (one-shot)
+
+            // Pausar y resetear ambos audios antes de la transición para evitar superposiciones.
+            himno.pause();
+            himno.currentTime = 0;
+            cañon.pause();
+            cañon.currentTime = 0;
+
+            // 1. Quitar la clase 'activo' de la pantalla actual
+            sActivo.forEach( seccionActiva => seccionActiva.classList.remove("activo"));
+            
+            // 2. Añadir la clase 'activo' a la nueva pantalla
+            document.getElementById(id).classList.add("activo");
+            
+            // --- Lógica de Audio ---
+            const PANTALLAS_CON_HIMNO = ['pantalla2', 'pantalla3', 'pantalla4']; 
+            const PANTALLAS_DE_MUERTE = [
+                'pantalla5', 'pantalla13', 'pantalla14', 'pantalla16', 'pantalla17', 
+                'pantalla18', 'pantalla20', 'pantalla21', 'pantalla23', 'pantalla24'
+            ];
+
+            if (PANTALLAS_DE_MUERTE.includes(id)) {
+                // Reproducir sonido de cañón (muerte)
+                cañon.play().catch(error => {
+                    console.error("El navegador bloqueó el autoplay del cañón:", error);
+                });
+            } else if (PANTALLAS_CON_HIMNO.includes(id)) {
+                // Reproducir himno del Capitolio
+                himno.play().catch(error => {
+                    console.error("El navegador bloqueó el autoplay del himno:", error);
+                });
+            }
+        }
+    </script>
+    <body>
+        
+        <audio id="himnoCapitolio" loop preload="auto">
+            <source src="audio/himno.mp3" type="audio/mpeg">
+            Tu navegador no soporta el audio del juego.
+        </audio>
+
+        <audio id="audioMuerte" preload="auto">
+            <source src="audio/canon.mp3" type="audio/mpeg">
+            Tu navegador no soporta el audio de cañón.
+        </audio>
+
+        <section id="pantalla1" class="activo invertir-texto">
+            <h1> Escoge personaje </h1>
+            <div class="botones">
+                <button onclick="cargarPantalla('pantalla2')">PEETA</button>
+                <button onclick="cargarPantalla('pantalla3')">KATNISS</button>
+                <button onclick="cargarPantalla('pantalla4')">FINNICK</button>
+            </div>
+        </section>
+        
+        <section id="pantalla2" class="invertir-texto">
+            <h1>Has escogido : PEETA</h1>
+            <h2>Puedes ir al centro, vas?</h2>
+             <div class="botones">
+                <button onclick="cargarPantalla('pantalla5')">SI</button>
+                <button onclick="cargarPantalla('pantalla6')">NO</button>
+            </div>
+        </section>
+        <section id="pantalla3" class="invertir-texto">
+              <h1>Has escogido : KATNISS</h1>
+              <h2>Puedes ir al centro, vas?</h2>
+              <div class="botones">
+                <button onclick="cargarPantalla('pantalla7')">SI</button>
+                <button onclick="cargarPantalla('pantalla8')">NO</button>
+            </div>
+        </section>
+        <section id="pantalla4" class="invertir-texto">
+            <h1>Has escogido : FINNICK</h1>
+             <h2>Puedes ir al centro, vas?</h2>
+            <div class="botones">
+                <button onclick="cargarPantalla('pantalla9')">SI</button>
+                <button onclick="cargarPantalla('pantalla10')">NO</button>
+            </div>
+        </section>
+        
+        <section id="pantalla5" class="invertir-texto">
+            <h1>Has recibido un hachazo en la nuca, ya no sientes nada</h1>
+            <h1>HAS MUERTO</h1>
+            <button onclick="cargarPantalla('pantalla1')">TRY AGAIN</button>
+        </section>
+        <section id="pantalla6" class="invertir-texto">
+              <h1>Te dañan la pierna con un flechazo, consigues huir al esconderte. Que haces?</h1>
+              <div class="botones">
+                <button onclick="cargarPantalla('pantalla13')">Intentar curarte</button>
+                <button onclick="cargarPantalla('pantalla14')">Seguir caminando</button>
+            </div>
+        </section>
+        <section id="pantalla7" class="invertir-texto">
+              <h1>Tras pegarle un hachazo a Peeta, has cogido tu arco.
+                  Hacia donde huyes? </h1>
+              <div class="botones">
+                <button onclick="cargarPantalla('pantalla15')">Playa</button>
+                <button onclick="cargarPantalla('pantalla16')">Montaña</button>
+            </div>
+        </section>
+        <section id="pantalla8" class="invertir-texto">
+              <h1>Huyes para esconderte </h1>
+              <div class="botones">
+                <button onclick="cargarPantalla('pantalla19')">Seguir oculto</button>
+                <button onclick="cargarPantalla('pantalla20')">Adentrarse mas en el bosque</button>
+            </div>
+        </section>
+        <section id="pantalla9" class="invertir-texto">
+              <h1>Tras empujar a uno al agua coges tu tridente, ves a PEETA agonizando.
+                  Decides rematarlo? </h1>
+              <div class="botones">
+                <button onclick="cargarPantalla('pantalla11')">SI</button>
+                <button onclick="cargarPantalla('pantalla12')">NO</button>
+            </div>
+        </section>
+        <section id="pantalla10" class="invertir-texto">
+              <h1>Huyes sano pero sin arma, tendras que volver </h1>
+              <div class="botones">
+                <button onclick="cargarPantalla('pantalla21')">Vuelves</button>
+                <button onclick="cargarPantalla('pantalla22')">Huyes</button>
+            </div>
+        </section>
+        <section id="pantalla11" class="invertir-texto">
+              <h1>Te apiadas de Peeta y acabas con su sufrimiento, ves flotar su cuerpo al horizonte </h1>
+              <div class="botones">
+                <button onclick="cargarPantalla('pantalla24')">Te diriges al Bosque</button>
+                <button onclick="cargarPantalla('pantalla23')">Te diriges a la Playa</button>
+            </div>
+        </section>
+        <section id="pantalla12" class="invertir-texto">
+              <h1>No eres capaz de acabar con el y te alejas mientras agoniza. Hacia donde te dirijes? </h1>
+              <div class="botones">
+                <button onclick="cargarPantalla('pantalla24')">Te diriges al Bosque</button>
+                <button onclick="cargarPantalla('pantalla23')">Te diriges a la Playa</button>
+            </div>
+        </section>
+        <section id="pantalla13" class="invertir-texto">
+              <h1>Has intentado curarte, confundiste plantas medicinales con unas venenosas.</h1>
+              <h1>HAS MUERTO</h1>
+              <button onclick="cargarPantalla('pantalla1')">TRY AGAIN</button>
+        </section>
+        <section id="pantalla14" class="invertir-texto">
+              <h1>Ignoras el dolor y continuas tu camino, pero no llegas muy lejos debido a una infección</h1>
+              <h1>HAS MUERTO</h1>
+              <button onclick="cargarPantalla('pantalla1')">TRY AGAIN</button>
+        </section>
+        <section id="pantalla15" class="invertir-texto">
+              <h1>Corres directa hacia la playa, al llegar ves un cuerpo flotando en la orilla. Que haces?</h1>
+              <div class="botones">
+                <button onclick="cargarPantalla('pantalla17')">Revisar el cadaver</button>
+                <button onclick="cargarPantalla('pantalla18')">Buscar refugio</button>
+            </div>
+        </section>
+        <section id="pantalla16" class="invertir-texto">
+              <h1>Ignoras el dolor y continuas tu camino, pero no llegas muy lejos debido a una infección</h1>
+              <h1>HAS MUERTO</h1>
+              <button onclick="cargarPantalla('pantalla1')">TRY AGAIN</button>
+        </section>
+        <section id="pantalla17" class="invertir-texto">
+              <h1>Al girar el cuerpo descubres que es Peeta, la culpa te llena y entras en depresión</h1>
+              <h1>HAS MUERTO</h1>
+              <button onclick="cargarPantalla('pantalla1')">TRY AGAIN</button>
+        </section>
+        <section id="pantalla18" class="invertir-texto">
+              <h1>Buscas refugio por la playa, pero no hay lugar donde resguardarse, cae la noche helada.</h1>
+              <h1>HAS MUERTO</h1>
+              <button onclick="cargarPantalla('pantalla1')">TRY AGAIN</button>
+        </section>
+        <section id="pantalla19" class="invertir-texto">
+              <h1>Te mantienes oculto. Usando tu ingenio y trampas consigues ganar los juegos y volver a salvo</h1>
+              <h1>PEETA HA MUERTO</h1>
+              <button onclick="cargarPantalla('pantalla1')">TRY AGAIN</button>
+        </section>
+        <section id="pantalla20" class="invertir-texto">
+              <h1>Corres hacia lo mas profundo del bosque, lugar de mucha fauna y flora venenosa, no duras mucho</h1>
+              <h1>HAS MUERTO</h1>
+              <button onclick="cargarPantalla('pantalla1')">TRY AGAIN</button>
+        </section>
+        <section id="pantalla21" class="invertir-texto">
+              <h1>Vuelves a la cornucopia, ERROR, aun quedaba gente y sin arma no eres rival</h1>
+              <h1>HAS MUERTO</h1>
+              <button onclick="cargarPantalla('pantalla1')">TRY AGAIN</button>
+        </section>
+        <section id="pantalla22" class="invertir-texto">
+              <h1>Decides que no vale la pena un arma. Hacia donde huyes?</h1>
+              <div class="botones">
+                <button onclick="cargarPantalla('pantalla23')">Playa</button>
+                <button onclick="cargarPantalla('pantalla24')">Bosque</button>
+            </div>
+        </section>
+        <section id="pantalla23" class="invertir-texto">
+              <h1>Te diriges hacia la playa, intentas huir nadando, pero recuerdas que no sabes nadar demasiado tarde</h1>
+              <h1>HAS MUERTO</h1>
+              <button onclick="cargarPantalla('pantalla1')">TRY AGAIN</button>
+        </section>
+        <section id="pantalla24" class="invertir-texto">
+              <h1>Intentas entrar al bosque, pero caes en una de las trampas que Katniss tiene colocadas</h1>
+              <h1>HAS MUERTO</h1>
+              <button onclick="cargarPantalla('pantalla1')">TRY AGAIN</button>
+        </section>
+    </body>
+</html>
